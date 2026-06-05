@@ -1,0 +1,41 @@
+# ============================================================
+#  LAB 0 — Préparer le terrain
+#  Ce fichier est déjà correct. Lis-le attentivement,
+#  puis fais un commit pour déclencher ton premier pipeline.
+# ============================================================
+
+name: ci
+
+# 👇 Quand ce workflow se déclenche-t-il ?
+on:
+  push:
+  pull_request:
+
+# 👇 Liste des jobs à exécuter
+jobs:
+  test:
+    # 👇 Sur quelle machine ?
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 — Récupérer le code du dépôt
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      # Étape 2 — Installer Python
+      - name: Configurer Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Étape 3 — Installer les dépendances
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt
+
+      # Étape 4 — Lancer les tests
+      - name: Lancer les tests
+        run: pytest tests/ -v
+
+      # Étape 5 — Afficher la couverture de code
+      - name: Rapport de couverture
+        run: pytest tests/ --cov=app --cov-report=term-missing

@@ -1,0 +1,39 @@
+# ============================================================
+#  LAB 3 — Pull Request + Artefact
+#
+#  🎯 Mission : compléter les sections marquées TODO
+#               pour que le pipeline :
+#               1. Se déclenche sur push ET pull_request
+#               2. Publie le rapport XML comme artefact
+# ============================================================
+
+name: ci-pr
+
+on:
+  push:
+  pull_request:    # TODO : s'assurer que les deux déclencheurs sont bien là
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt
+
+      - name: Lancer les tests avec rapport XML
+        # TODO : ajouter l'option --junitxml=rapport-tests.xml à la commande ci-dessous
+        run: pytest tests/ -v
+
+      # TODO : décommenter et compléter ce step pour publier le rapport
+      # - name: Publier le rapport de tests
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: rapport-tests
+      #     path: ???     # ← quel fichier publier ?
