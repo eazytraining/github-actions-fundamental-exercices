@@ -6,15 +6,15 @@
 
 name: ci
 
-# 👇 Quand ce workflow se déclenche-t-il ?
+#  Quand ce workflow se déclenche-t-il ?
 on:
   push:
   pull_request:
 
-# 👇 Liste des jobs à exécuter
+#  Liste des jobs à exécuter
 jobs:
   test:
-    # 👇 Sur quelle machine ?
+    #  Sur quelle machine ?
     runs-on: ubuntu-latest
 
     steps:
