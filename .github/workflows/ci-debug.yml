@@ -32,5 +32,6 @@ jobs:
 
       - name: Lancer les tests
         run: pytest tests/ -v    
+        
       - name: Rapport de couverture
-        run: pytest test/ --cov=app --cov-report=term-missing   
+        run: pytest tests/ --cov=app --cov-report=term-missing   
