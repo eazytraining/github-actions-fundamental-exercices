@@ -16,7 +16,7 @@ on:
 
 jobs:
   test:
-  runs-on: ubuntu-latest        # ← ERREUR 1 : indentation incorrecte
+    runs-on: ubuntu-latest        # ← ERREUR 1 : indentation incorrecte
 
     steps:
       - name: Récupérer le code
@@ -31,7 +31,6 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Lancer les tests
-        run: pytestt tests/ -v    # ← ERREUR 2 : faute de frappe dans la commande
-
+        run: pytest tests/ -v    
       - name: Rapport de couverture
-        run: pytest test/ --cov=app --cov-report=term-missing   # ← ERREUR 3 : mauvais chemin
+        run: pytest test/ --cov=app --cov-report=term-missing   
