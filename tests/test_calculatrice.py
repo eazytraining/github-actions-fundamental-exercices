@@ -27,7 +27,8 @@ def test_division_par_zero():
     with pytest.raises(ValueError, match="Division par zéro impossible"):
         diviser(5, 0)
 
-
+def test_additionner_grands_nombres():
+    assert additionner(1_000_000, 2_000_000) == 3_000_000
 # ──────────────────────────────────────────────
 #  🏋️  EXERCICE — Ajoute tes propres tests ici
 # ──────────────────────────────────────────────
