@@ -29,11 +29,11 @@ jobs:
 
       - name: Lancer les tests avec rapport XML
         # TODO : ajouter l'option --junitxml=rapport-tests.xml à la commande ci-dessous
-        run: pytest tests/ -v
+        run: pytest tests/ -v --junitxml=rapport-tests.xml
 
       # TODO : décommenter et compléter ce step pour publier le rapport
-      # - name: Publier le rapport de tests
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: rapport-tests
-      #     path: ???     # ← quel fichier publier ?
+      - name: Publier le rapport de tests
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-tests
+          path: rapport-tests.xml     # ← quel fichier publier ?
